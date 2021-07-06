@@ -21,15 +21,9 @@ namespace Test
             Assert.AreEqual(rover.Coordinates, initialCoordinates);
         }
 
-        private void ResetRoverPosition()
-        {
-            rover.Coordinates = initialCoordinates;
-        }
-
         [Test]
         public void CanTurnLeft()
         {
-            ResetRoverPosition();
             rover.Turn(Way.Left);
 
             Assert.IsTrue(rover.Coordinates.X == 0);
@@ -40,7 +34,6 @@ namespace Test
         [Test]
         public void CanTurnRight()
         {
-            ResetRoverPosition();
             rover.Turn(Way.Right);
 
             Assert.IsTrue(rover.Coordinates.X == 0);
@@ -51,7 +44,6 @@ namespace Test
         [Test]
         public void CanMove()
         {
-            ResetRoverPosition();
             rover.Move();
 
             Assert.IsTrue(rover.Coordinates.X == 0);
