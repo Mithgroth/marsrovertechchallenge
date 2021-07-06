@@ -58,5 +58,28 @@ namespace Test
             Assert.IsTrue(rover.Coordinates.Y == 1);
             Assert.IsTrue(rover.Coordinates.Direction == Direction.North);
         }
+
+        [Test]
+        public void Expedition()
+        {
+            var expedition = new App.Expedition();
+
+            expedition.Command("5 5");
+            expedition.Command("1 2 N");
+            expedition.Command("LMLMLMLMM");
+            expedition.Command("3 3 E");
+            expedition.Command("MMRMMRMRRM");
+
+            var rover1 = expedition.Rovers[0];
+            var rover2 = expedition.Rovers[1];
+
+            Assert.IsTrue(rover1.Coordinates.X == 1);
+            Assert.IsTrue(rover1.Coordinates.Y == 3);
+            Assert.IsTrue(rover1.Coordinates.Direction == Direction.North);
+
+            Assert.IsTrue(rover2.Coordinates.X == 5);
+            Assert.IsTrue(rover2.Coordinates.Y == 1);
+            Assert.IsTrue(rover2.Coordinates.Direction == Direction.East);
+        }
     }
 }
