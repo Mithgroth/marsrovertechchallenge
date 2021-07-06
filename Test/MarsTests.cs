@@ -6,11 +6,12 @@ namespace Test
     public class MarsTests
     {
         private Rover rover;
-        private Coordinate initialCoordinates = new(0, 0, Direction.North);
+        private Coordinate initialCoordinates;
 
         [SetUp]
         public void Setup()
         {
+            initialCoordinates = new(0, 0, Direction.North);
             rover = new Rover(initialCoordinates);
         }
 
