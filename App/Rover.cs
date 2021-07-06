@@ -8,5 +8,6 @@ namespace App
 {
     public class Rover
     {
+        public Coordinate Coordinates { get; set; }
     }
 }
