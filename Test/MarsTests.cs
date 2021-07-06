@@ -46,5 +46,16 @@ namespace Test
             Assert.IsTrue(rover.Coordinates.Y == 0);
             Assert.IsTrue(rover.Coordinates.Direction == Direction.East);
         }
+
+        [Test]
+        public void CanMove()
+        {
+            ResetRoverPosition();
+            rover.Move();
+
+            Assert.IsTrue(rover.Coordinates.X == 0);
+            Assert.IsTrue(rover.Coordinates.Y == 1);
+            Assert.IsTrue(rover.Coordinates.Direction == Direction.North);
+        }
     }
 }
