@@ -33,5 +33,17 @@ namespace App
 
             Coordinates.Direction = (Direction)newDirection;
         }
+
+        public void Move()
+        {
+            _ = Coordinates.Direction switch
+            {
+                Direction.North => Coordinates.Y++,
+                Direction.East => Coordinates.X++,
+                Direction.South => Coordinates.Y--,
+                Direction.West => Coordinates.X--,
+                _ => throw new InvalidOperationException()
+            };
+        }
     }
 }

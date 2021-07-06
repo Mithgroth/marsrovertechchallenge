@@ -6,7 +6,7 @@ namespace Test
     public class MarsTests
     {
         private Rover rover;
-        private readonly Coordinate initialCoordinates = new(0, 0, Direction.North);
+        private Coordinate initialCoordinates = new(0, 0, Direction.North);
 
         [SetUp]
         public void Setup()
