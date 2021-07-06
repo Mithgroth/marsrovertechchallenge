@@ -54,7 +54,7 @@ namespace Test
         [Test]
         public void Expedition()
         {
-            var expedition = new App.Expedition();
+            var expedition = new Expedition();
 
             expedition.Command("5 5");
             expedition.Command("1 2 N");
