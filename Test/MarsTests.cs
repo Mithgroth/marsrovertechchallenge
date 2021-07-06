@@ -5,16 +5,22 @@ namespace Test
 {
     public class MarsTests
     {
+        private Rover rover;
+
         [SetUp]
         public void Setup()
         {
-            var rover = new Rover();
+            rover = new Rover();
         }
 
         [Test]
-        public void Test1()
+        public void SetInitialCoordinate()
         {
-            Assert.Pass();
+            var initialCoordinates = new Coordinate(0, 0, Direction.North);
+
+            rover.Coordinates = initialCoordinates;
+
+            Assert.AreEqual(rover.Coordinates, initialCoordinates);
         }
     }
 }
