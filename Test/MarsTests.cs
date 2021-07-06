@@ -11,14 +11,13 @@ namespace Test
         [SetUp]
         public void Setup()
         {
-            rover = new Rover();
             initialCoordinates = new Coordinate(0, 0, Direction.North);
+            rover = new Rover(initialCoordinates);
         }
 
         [Test]
         public void SetInitialCoordinate()
         {
-            rover.Coordinates = initialCoordinates;
             Assert.AreEqual(rover.Coordinates, initialCoordinates);
         }
 
@@ -27,7 +26,7 @@ namespace Test
         {
             // reset to initial
             rover.Coordinates = initialCoordinates;
-            rover.Turn(App.Way.Left);
+            rover.Turn(Way.Left);
 
             Assert.IsTrue(rover.Coordinates.X == 0);
             Assert.IsTrue(rover.Coordinates.Y == 0);
@@ -39,12 +38,11 @@ namespace Test
         {
             // reset to initial
             rover.Coordinates = initialCoordinates;
-            rover.Turn(App.Way.Right);
+            rover.Turn(Way.Right);
 
             Assert.IsTrue(rover.Coordinates.X == 0);
             Assert.IsTrue(rover.Coordinates.Y == 0);
             Assert.IsTrue(rover.Coordinates.Direction == Direction.East);
         }
     }
-}
 }
