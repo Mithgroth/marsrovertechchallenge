@@ -6,26 +6,29 @@ namespace Test
     public class MarsTests
     {
         private Rover rover;
-        private Coordinate initialCoordinates;
+        private readonly Coordinate initialCoordinates = new(0, 0, Direction.North);
 
         [SetUp]
         public void Setup()
         {
-            initialCoordinates = new Coordinate(0, 0, Direction.North);
             rover = new Rover(initialCoordinates);
         }
 
         [Test]
-        public void SetInitialCoordinate()
+        public void SetInitialCoordinates()
         {
             Assert.AreEqual(rover.Coordinates, initialCoordinates);
+        }
+
+        private void ResetRoverPosition()
+        {
+            rover.Coordinates = initialCoordinates;
         }
 
         [Test]
         public void CanTurnLeft()
         {
-            // reset to initial
-            rover.Coordinates = initialCoordinates;
+            ResetRoverPosition();
             rover.Turn(Way.Left);
 
             Assert.IsTrue(rover.Coordinates.X == 0);
@@ -36,8 +39,7 @@ namespace Test
         [Test]
         public void CanTurnRight()
         {
-            // reset to initial
-            rover.Coordinates = initialCoordinates;
+            ResetRoverPosition();
             rover.Turn(Way.Right);
 
             Assert.IsTrue(rover.Coordinates.X == 0);
