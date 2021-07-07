@@ -73,5 +73,20 @@ namespace Test
             Assert.IsTrue(rover2.Coordinates.Y == 1);
             Assert.IsTrue(rover2.Coordinates.Direction == Direction.East);
         }
+
+        private void OutOfBoundsExpedition()
+        {
+            var expedition = new Expedition();
+
+            expedition.Command("2 2");
+            expedition.Command("0 0 N");
+            expedition.Command("MMMM");
+        }
+
+        [Test]
+        public void CheckExpeditionBounds()
+        {
+            Assert.Throws<System.InvalidOperationException>(OutOfBoundsExpedition);
+        }
     }
 }
