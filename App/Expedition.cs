@@ -83,8 +83,15 @@ namespace App
                             break;
 
                         case 'M':
-                            lastRover.Move();
-                            isCommandValid = true;
+                            if (IsWithinBounds(lastRover.Coordinates))
+                            {
+                                lastRover.Move();
+                                isCommandValid = true;
+                            }
+                            else
+                            {
+                                throw new InvalidOperationException("Move is out of boundaries");
+                            }
                             break;
 
                         default:
@@ -97,6 +104,46 @@ namespace App
                     _commands.Add(command);
                 }
             }
+        }
+
+        // Checks if the next movement is within pre-given bounds.
+        private bool IsWithinBounds(Coordinate coordinate)
+        {
+            switch (coordinate.Direction)
+            {
+                case Direction.North:
+                    if (coordinate.Y >= _bounds.Y)
+                    {
+                        return false;
+                    }
+                    break;
+
+                case Direction.East:
+                    if (coordinate.X >= _bounds.X)
+                    {
+                        return false;
+                    }
+                    break;
+
+                case Direction.South:
+                    if (coordinate.Y <= 0)
+                    {
+                        return false;
+                    }
+                    break;
+
+                case Direction.West:
+                    if (coordinate.X <= 0)
+                    {
+                        return false;
+                    }
+                    break;
+
+                default:
+                    break;
+            }
+
+            return true;
         }
     }
 }
